@@ -1,0 +1,40 @@
+{
+  "name": "nexus-prisma-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Eric Pezzulo <eric.pezzulo@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "yarn run generate && jest",
+    "dev": "ts-node-dev --transpile-only --no-notify api/index.ts",
+    "build": "tsc",
+    "generate": "ts-node --transpile-only api/schema"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.8.1",
+    "apollo-server": "^3.6.2",
+    "graphql": "^16.3.0",
+    "nexus": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "get-port": "5.1.1",
+    "graphql-request": "^4.0.0",
+    "jest": "^27.4.7",
+    "prisma": "^3.8.1",
+    "ts-jest": "^27.1.3",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.5"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "globals": {
+      "ts-jest": {
+        "diagnostics": {
+          "warnOnly": true
+        }
+      }
+    },
+    "testEnvironment": "node"
+  }
+}
