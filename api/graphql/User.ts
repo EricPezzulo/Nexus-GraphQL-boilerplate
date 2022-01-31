@@ -1,9 +1,10 @@
+import { prisma } from "@prisma/client";
 import { extendType, nonNull, objectType, stringArg } from "nexus";
 
 export const User = objectType({
   name: "User",
   definition(t) {
-    t.int("id");
+    t.string("id");
     t.string("name");
     t.string("username");
     t.string("email");
@@ -55,5 +56,18 @@ export const UserMutations = extendType({
         });
       },
     });
+
+    // delete user
+    // t.nonNull.list.field("deleteUser", {
+    //   type: "User",
+    //   args: {
+    //     id: nonNull(stringArg()),
+    //   },
+    //   async resolve(_root, args, context) {
+    //     return await context.db.user.delete({
+    //       where: { id: args.id },
+    //     });
+    //   },
+    // });
   },
 });

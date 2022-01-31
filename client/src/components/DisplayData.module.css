@@ -1,0 +1,45 @@
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.userCard {
+  display: flex;
+  flex-direction: column;
+  background-color: #e0e0e0;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 5px;
+  margin-block: 5px;
+}
+.inputData {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  place-items: center;
+}
+.inputData > input {
+  display: flex;
+  outline: none;
+}
+.inputBar {
+  margin-block: 2px;
+  padding-block: 5px;
+  padding-inline: 3px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid lightgray;
+}
+.createBtn {
+  background: rgb(104, 169, 255);
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  transition: 200ms ease-in-out;
+}
+.createBtn:hover {
+  cursor: pointer;
+  background: rgb(79, 155, 255);
+  color: white;
+}
