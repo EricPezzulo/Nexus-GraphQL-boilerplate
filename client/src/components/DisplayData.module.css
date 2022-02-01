@@ -6,11 +6,11 @@ p {
 .userCard {
   display: flex;
   flex-direction: column;
-  background-color: #e0e0e0;
+  background-color: #ececec;
   width: fit-content;
   padding: 10px;
-  border-radius: 5px;
-  margin-block: 5px;
+  border-radius: 2px;
+  margin: 5px;
 }
 .inputData {
   display: flex;
@@ -42,4 +42,43 @@ p {
   cursor: pointer;
   background: rgb(79, 155, 255);
   color: white;
+}
+
+.errorContainer {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  background: rgb(242, 242, 242);
+  place-items: center;
+}
+.error {
+  display: flex;
+  flex-direction: column;
+}
+.error > p,
+i {
+  font-size: 24px;
+  font-weight: 100;
+  text-align: center;
+}
+.componentDelBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6e6e6e;
+  color: white;
+  width: 75px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  transition: 200ms ease-in-out;
+}
+.componentDelBtn:hover {
+  cursor: pointer;
+  background-color: #999999;
+}
+.userCard_buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
 }

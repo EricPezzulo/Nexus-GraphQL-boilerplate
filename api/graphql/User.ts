@@ -47,7 +47,6 @@ export const UserMutations = extendType({
         email: nonNull(stringArg()),
       },
       resolve(_root, args, context) {
-        console.log(args);
         return context.db.user.findMany({
           where: {
             email: args.email,
@@ -55,19 +54,6 @@ export const UserMutations = extendType({
         });
       },
     });
-
-    // delete user
-    // t.nonNull.list.field("deleteUser", {
-    //   type: "User",
-    //   args: {
-    //     id: nonNull(stringArg()),
-    //   },
-    //   async resolve(_root, args, context) {
-    //     return await context.db.user.delete({
-    //       where: { id: args.id },
-    //     });
-    //   },
-    // });
   },
 });
 
@@ -78,10 +64,13 @@ export const DeleteUserMutation = extendType({
       type: "User",
       args: {
         id: nonNull(stringArg()),
+        name: nonNull(stringArg()),
+        username: nonNull(stringArg()),
+        email: nonNull(stringArg()),
       },
-      async resolve(_root, args, context) {
+      resolve(_root, args, context) {
         console.log(args.id);
-        return await context.db.user.delete({
+        return context.db.user.delete({
           where: {
             id: args.id,
           },

@@ -1,6 +1,7 @@
 import { gql, useQuery, useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import styles from "./DisplayData.module.css";
+
 const QUERY_ALL_USERS = gql`
   query FetchAllUsers {
     users {
@@ -34,14 +35,26 @@ function DisplayData() {
   const { data, loading, error } = useQuery(QUERY_ALL_USERS);
   const [mutateUsers] = useMutation(CREATE_NEW_USER);
   const [deleteUserMutation] = useMutation(DELETE_USER);
-  const [deleteUserId, setDeleteUserId] = useState("");
 
   if (loading) {
-    return <h1>loading</h1>;
+    return (
+      <div>
+        <p>loading ...</p>
+      </div>
+    );
   }
 
   if (error) {
     console.log(error);
+    return (
+      <div className={styles.errorContainer}>
+        <div className={styles.error}>
+          <p>Could not fetch data from the server.</p>
+          <i>That means the server is either offline</i>
+          <i>or there is an error in the code.</i>
+        </div>
+      </div>
+    );
   }
 
   const createUser = (e) => {
@@ -63,19 +76,14 @@ function DisplayData() {
     });
     setNewUser({ name: "", username: "", email: "" });
   };
+
   const deleteUser = (id) => {
-    console.log(id);
-    setDeleteUserId(id);
-    try {
-      deleteUserMutation({
-        variables: {
-          id: deleteUserId,
-        },
-        refetchQueries: [{ query: QUERY_ALL_USERS }],
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    deleteUserMutation({
+      variables: {
+        id,
+      },
+      refetchQueries: [{ query: QUERY_ALL_USERS }],
+    });
   };
 
   if (data) {
@@ -89,8 +97,15 @@ function DisplayData() {
                   <p>Name: {user.name}</p>
                   <p>Email: {user.email}</p>
                   <p>Username: {user.username}</p>
-                  <p>{user.id}</p>
-                  <button onClick={() => deleteUser(user.id)}>delete</button>
+                  <p>id: {user.id}</p>
+                  <div className={styles.userCard_buttonContainer}>
+                    <button
+                      className={styles.componentDelBtn}
+                      onClick={() => deleteUser(user.id)}
+                    >
+                      delete
+                    </button>
+                  </div>
                 </div>
               );
             })}

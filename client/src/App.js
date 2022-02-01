@@ -1,12 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import {
-  useQuery,
-  gql,
-  InMemoryCache,
-  ApolloProvider,
-  ApolloClient,
-} from "@apollo/client";
+import { InMemoryCache, ApolloProvider, ApolloClient } from "@apollo/client";
 import DisplayData from "./components/DisplayData";
 
 function App() {
