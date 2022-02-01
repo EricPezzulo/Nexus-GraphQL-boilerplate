@@ -4,4 +4,5 @@ import { context } from "./context";
 export const server = new ApolloServer({
   schema,
   context,
+  cors: true,
 });

@@ -20,10 +20,21 @@ const CREATE_NEW_USER = gql`
     }
   }
 `;
+
+const DELETE_USER = gql`
+  mutation DeleteUser($id: String!) {
+    deleteUser(id: $id) {
+      name
+    }
+  }
+`;
+
 function DisplayData() {
   const [newUser, setNewUser] = useState({ name: "", username: "", email: "" });
   const { data, loading, error } = useQuery(QUERY_ALL_USERS);
   const [mutateUsers] = useMutation(CREATE_NEW_USER);
+  const [deleteUserMutation] = useMutation(DELETE_USER);
+  const [deleteUserId, setDeleteUserId] = useState("");
 
   if (loading) {
     return <h1>loading</h1>;
@@ -34,7 +45,6 @@ function DisplayData() {
   }
 
   const createUser = (e) => {
-    e.preventDefault();
     if (
       newUser.name.length === 0 &&
       newUser.email.length === 0 &&
@@ -53,6 +63,20 @@ function DisplayData() {
     });
     setNewUser({ name: "", username: "", email: "" });
   };
+  const deleteUser = (id) => {
+    console.log(id);
+    setDeleteUserId(id);
+    try {
+      deleteUserMutation({
+        variables: {
+          id: deleteUserId,
+        },
+        refetchQueries: [{ query: QUERY_ALL_USERS }],
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   if (data) {
     return (
@@ -65,6 +89,8 @@ function DisplayData() {
                   <p>Name: {user.name}</p>
                   <p>Email: {user.email}</p>
                   <p>Username: {user.username}</p>
+                  <p>{user.id}</p>
+                  <button onClick={() => deleteUser(user.id)}>delete</button>
                 </div>
               );
             })}
@@ -95,7 +121,11 @@ function DisplayData() {
               setNewUser({ ...newUser, username: e.target.value })
             }
           />
-          <button className={styles.createBtn} onClick={createUser}>
+          <button
+            type="button"
+            className={styles.createBtn}
+            onClick={createUser}
+          >
             CREATE USER
           </button>
         </div>
