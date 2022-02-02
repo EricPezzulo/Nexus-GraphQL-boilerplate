@@ -60,17 +60,14 @@ export const UserMutations = extendType({
 export const DeleteUserMutation = extendType({
   type: "Mutation",
   definition(t) {
-    t.nonNull.list.field("deleteUser", {
+  t.nonNull.field("deleteUser",{
       type: "User",
       args: {
         id: nonNull(stringArg()),
-        name: nonNull(stringArg()),
-        username: nonNull(stringArg()),
-        email: nonNull(stringArg()),
       },
-      resolve(_root, args, context) {
+      async resolve(_root, args, context) {
         console.log(args.id);
-        return context.db.user.delete({
+        return await context.db.user.delete({
           where: {
             id: args.id,
           },
