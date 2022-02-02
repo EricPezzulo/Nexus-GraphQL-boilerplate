@@ -7,7 +7,7 @@ p {
   display: flex;
   flex-direction: column;
   background-color: #ececec;
-  width: fit-content;
+  width: 265px;
   padding: 10px;
   border-radius: 2px;
   margin: 5px;
