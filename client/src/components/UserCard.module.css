@@ -1,4 +1,4 @@
-.userCard__container {
+.userCard__container__light {
   display: flex;
   flex-direction: column;
   background-color: rgb(236, 236, 236);
@@ -6,13 +6,33 @@
   border-bottom-right-radius: 7px;
   width: 265px;
   margin: 10px;
+  transition: 150ms;
+}
+.userCard__container__dark {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(56, 56, 56);
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  width: 265px;
+  margin: 10px;
+  color: white;
+  transition: 150ms;
 }
 
-.top__Card__hero {
+.top__Card__hero__light {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(216, 237, 255);
+  transition: 150ms;
+}
+.top__Card__hero__dark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(126, 126, 126);
+  transition: 150ms;
 }
 .card__image {
   width: 100%;
@@ -22,7 +42,7 @@
 .info__container {
   padding: 10px;
 }
-.componentDelBtn {
+.componentDelBtn__light {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,10 +54,27 @@
   border-radius: 5px;
   transition: 200ms ease-in-out;
 }
-.componentDelBtn:hover {
+.componentDelBtn__dark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e9e9e9;
+  color: rgb(73, 73, 73);
+  width: 75px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  transition: 200ms ease-in-out;
+}
+.componentDelBtn__light:hover {
   cursor: pointer;
   background-color: #999999;
 }
+.componentDelBtn__dark:hover {
+  cursor: pointer;
+  background-color: #b8b8b8;
+}
+
 .userCard_buttonContainer {
   display: flex;
   justify-content: center;

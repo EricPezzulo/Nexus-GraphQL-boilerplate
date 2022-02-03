@@ -1,6 +1,5 @@
 .createUserComponent__container {
   display: flex;
-  place-self: center;
   background-color: rgb(238, 238, 238);
   width: min-content;
   padding: 10px;

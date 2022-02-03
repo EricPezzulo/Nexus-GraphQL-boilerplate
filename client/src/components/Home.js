@@ -2,13 +2,22 @@ import React from "react";
 import styles from "../App.module.css";
 import CreateUserComponent from "./CreateUserComponent";
 import DisplayData from "./DisplayData";
-import Header from "./Header";
+import Header, { darkmodeState } from "./Header";
+import { useRecoilValue } from "recoil";
+
 const Home = () => {
+  const darkmode = useRecoilValue(darkmodeState);
   return (
-    <div className={styles.app__container}>
+    <div
+      className={
+        darkmode ? styles.app__container__dark : styles.app_container__light
+      }
+    >
       <Header />
       <DisplayData />
-      <CreateUserComponent />
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <CreateUserComponent />
+      </div>
     </div>
   );
 };

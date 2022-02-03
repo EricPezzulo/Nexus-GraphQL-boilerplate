@@ -1,8 +1,16 @@
-.app__container {
+.app__container__dark {
   display: flex;
   flex-direction: column;
-  background-color: rgb(255, 255, 255);
-  height: 100%;
+  background-color: rgb(41, 41, 41);
+  height: 100vh;
+  transition: 150ms;
+}
+.app__container__light {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(41, 41, 41);
+  height: 100vh;
+  transition: 150ms;
 }
 /* 
 @media only screen and (max-width: 600px) {

@@ -1,7 +1,8 @@
 import { gql, useMutation } from "@apollo/client";
 import React from "react";
+import { darkmodeState } from "./Header";
 import styles from "./UserCard.module.css";
-
+import { useRecoilValue } from "recoil";
 const DELETE_USER = gql`
   mutation DeleteUser($id: String!) {
     deleteUser(id: $id) {
@@ -21,7 +22,8 @@ const QUERY_ALL_USERS = gql`
 `;
 
 const UserCard = ({ name, id, username, email, imageUrl }) => {
-  console.log(imageUrl);
+  const darkmode = useRecoilValue(darkmodeState);
+
   const [deleteUserMutation] = useMutation(DELETE_USER);
   const deleteUser = (id) => {
     deleteUserMutation({
@@ -32,8 +34,20 @@ const UserCard = ({ name, id, username, email, imageUrl }) => {
     });
   };
   return (
-    <div className={styles.userCard__container}>
-      <div className={styles.top__Card__hero}>
+    <div
+      className={
+        darkmode
+          ? styles.userCard__container__dark
+          : styles.userCard__container__light
+      }
+    >
+      <div
+        className={
+          darkmode
+            ? styles.top__Card__hero__dark
+            : styles.top__Card__hero__light
+        }
+      >
         <div>
           <img
             className={styles.card__image}
@@ -46,11 +60,14 @@ const UserCard = ({ name, id, username, email, imageUrl }) => {
         <p>Name: {name}</p>
         <p>Username: {username}</p>
         <p>Email: {email}</p>
-        <p className={styles.hide__id}>ID: {id}</p>
       </div>
       <div className={styles.userCard_buttonContainer}>
         <button
-          className={styles.componentDelBtn}
+          className={
+            darkmode
+              ? styles.componentDelBtn__dark
+              : styles.componentDelBtn__light
+          }
           onClick={() => deleteUser(id)}
         >
           delete

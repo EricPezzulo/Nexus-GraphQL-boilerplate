@@ -2,27 +2,28 @@ import React from "react";
 import styles from "./Header.module.css";
 import { DarkMode } from "@styled-icons/material/DarkMode";
 import { LightMode } from "@styled-icons/material-twotone/LightMode";
-import { useSelector, useDispatch } from "react-redux";
-import toggleDarkMode from "../Redux/actions/darkModeAction";
-const Header = () => {
-  const { darkMode } = useSelector((state) => state);
-  const dispatch = useDispatch();
-  // rest
+import { useRecoilState, atom } from "recoil";
 
+export const darkmodeState = atom({
+  key: "darkmodeState",
+  default: false,
+});
+const Header = () => {
+  const [darkmode, setDarkmode] = useRecoilState(darkmodeState);
   const toggleMenu = (e) => {
-    e.preventDefault();
-    dispatch(toggleDarkMode());
+    setDarkmode((prev) => !prev);
   };
   return (
     <div
-      className={`${
-        darkMode
+      className={
+        darkmode
           ? styles.header__container__dark
           : styles.header__container__light
-      }`}
+      }
     >
       <div className={styles.title}>
         <p>Simpsons Wiki</p>
+        {darkmode}
       </div>
       <div className={styles.center}>
         <div className={styles.searchbar__container}>
@@ -31,7 +32,7 @@ const Header = () => {
         </div>
       </div>
       <div className={styles.right}>
-        {darkMode ? (
+        {darkmode ? (
           <div className={styles.darkModeIcon} onClick={toggleMenu}>
             <DarkMode />
           </div>
