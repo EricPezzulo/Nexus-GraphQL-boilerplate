@@ -8,12 +8,24 @@ p {
   justify-content: center;
 }
 
-.errorContainer {
-  display: grid;
+.errorContainer__light {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  width: 100vw;
   background: rgb(242, 242, 242);
   place-items: center;
+  transition: 150ms;
+}
+.errorContainer__dark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: rgb(41, 41, 41);
+  place-items: center;
+  transition: 150ms;
+  color: white;
 }
 .error {
   display: flex;

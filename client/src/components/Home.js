@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div
       className={
-        darkmode ? styles.app__container__dark : styles.app_container__light
+        darkmode ? styles.app__container__dark : styles.app__container__light
       }
     >
       <Header />

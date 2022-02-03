@@ -1,5 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
+import { useRecoilValue } from "recoil";
 import styles from "./DisplayData.module.css";
+import { darkmodeState } from "./Header";
 import UserCard from "./UserCard";
 
 const QUERY_ALL_USERS = gql`
@@ -16,7 +18,7 @@ const QUERY_ALL_USERS = gql`
 
 function DisplayData() {
   const { data, loading, error } = useQuery(QUERY_ALL_USERS);
-
+  const darkmode = useRecoilValue(darkmodeState);
   if (loading) {
     return (
       <div>
@@ -28,7 +30,11 @@ function DisplayData() {
   if (error) {
     console.log(error);
     return (
-      <div className={styles.errorContainer}>
+      <div
+        className={
+          darkmode ? styles.errorContainer__dark : styles.errorContainer__light
+        }
+      >
         <div className={styles.error}>
           <p>Could not fetch data from the server.</p>
           <i>That means the server is either offline</i>
