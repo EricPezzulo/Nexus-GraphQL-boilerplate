@@ -1,0 +1,12 @@
+.app__container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  height: 100%;
+}
+/* 
+@media only screen and (max-width: 600px) {
+  .app__container {
+    align-items: center;
+  }
+} */

@@ -1,0 +1,46 @@
+.createUserComponent__container {
+  display: flex;
+  place-self: center;
+  background-color: rgb(238, 238, 238);
+  width: min-content;
+  padding: 10px;
+  border-radius: 8px;
+}
+.createBtn {
+  background: rgb(104, 169, 255);
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  transition: 200ms ease-in-out;
+  margin-top: 5px;
+}
+.createBtn:hover {
+  cursor: pointer;
+  background: rgb(79, 155, 255);
+  color: white;
+}
+.displayData__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-items: center;
+}
+.inputData > input {
+  display: flex;
+  outline: none;
+  font-size: 16px;
+}
+.inputBar {
+  margin-block: 2px;
+  padding-block: 5px;
+  padding-inline: 3px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid lightgray;
+}

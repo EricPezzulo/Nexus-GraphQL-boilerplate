@@ -1,17 +1,16 @@
-import "./App.css";
-import { InMemoryCache, ApolloProvider, ApolloClient } from "@apollo/client";
 import DisplayData from "./components/DisplayData";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AboutPage from "./components/AboutPage";
+import Home from "./components/Home";
 
 function App() {
-  const client = new ApolloClient({
-    cache: new InMemoryCache(),
-    uri: "http://localhost:4000/graphql",
-  });
-
   return (
-    <ApolloProvider client={client}>
-      <DisplayData />
-    </ApolloProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+      </Routes>
+    </Router>
   );
 }
 
