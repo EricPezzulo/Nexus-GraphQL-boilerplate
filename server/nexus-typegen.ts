@@ -60,7 +60,6 @@ export interface NexusGenFieldTypes {
     createDraft: NexusGenRootTypes['Post'] | null; // Post
     createUser: NexusGenRootTypes['User'] | null; // User
     deleteUser: NexusGenRootTypes['User']; // User!
-    findUser: Array<NexusGenRootTypes['User'] | null>; // [User]!
     publish: NexusGenRootTypes['Post'] | null; // Post
   }
   Post: { // field return type
@@ -71,6 +70,7 @@ export interface NexusGenFieldTypes {
   }
   Query: { // field return type
     drafts: Array<NexusGenRootTypes['Post'] | null>; // [Post]!
+    findUser: Array<NexusGenRootTypes['User'] | null>; // [User]!
     posts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
     users: Array<NexusGenRootTypes['User'] | null>; // [User]!
   }
@@ -88,7 +88,6 @@ export interface NexusGenFieldTypeNames {
     createDraft: 'Post'
     createUser: 'User'
     deleteUser: 'User'
-    findUser: 'User'
     publish: 'Post'
   }
   Post: { // field return type name
@@ -99,6 +98,7 @@ export interface NexusGenFieldTypeNames {
   }
   Query: { // field return type name
     drafts: 'Post'
+    findUser: 'User'
     posts: 'Post'
     users: 'User'
   }
@@ -126,11 +126,13 @@ export interface NexusGenArgTypes {
     deleteUser: { // args
       id: string; // String!
     }
-    findUser: { // args
-      email: string; // String!
-    }
     publish: { // args
       draftId: number; // Int!
+    }
+  }
+  Query: {
+    findUser: { // args
+      id: string; // String!
     }
   }
 }

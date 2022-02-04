@@ -3,18 +3,20 @@ import styles from "./Header.module.css";
 import { DarkMode } from "@styled-icons/material/DarkMode";
 import { LightMode } from "@styled-icons/material-twotone/LightMode";
 import { useRecoilState, atom } from "recoil";
+import { useNavigate } from "react-router-dom";
 
 export const darkmodeState = atom({
   key: "darkmodeState",
   default: false,
 });
 const Header = () => {
+  let navigate = useNavigate();
   const [darkmode, setDarkmode] = useRecoilState(darkmodeState);
   const toggleMenu = (e) => {
     setDarkmode((prev) => !prev);
   };
   return (
-    <div
+    <div 
       className={
         darkmode
           ? styles.header__container__dark
@@ -22,8 +24,9 @@ const Header = () => {
       }
     >
       <div className={styles.title}>
-        <p>Simpsons Wiki</p>
-        {darkmode}
+        <p className={styles.titleText} onClick={()=> {
+          navigate(`/`)
+        }}>Simpsons Wiki</p>
       </div>
       <div className={styles.center}>
         <div className={styles.searchbar__container}>

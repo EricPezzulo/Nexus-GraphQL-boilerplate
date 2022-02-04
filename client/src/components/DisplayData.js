@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import styles from "./DisplayData.module.css";
 import { darkmodeState } from "./Header";
@@ -28,7 +29,6 @@ function DisplayData() {
   }
 
   if (error) {
-    console.log(error);
     return (
       <div
         className={
@@ -43,6 +43,8 @@ function DisplayData() {
       </div>
     );
   }
+    
+  
 
   if (data) {
     return (
@@ -50,15 +52,18 @@ function DisplayData() {
         {data &&
           data.users.map((user, key) => {
             return (
-              <div key={key}>
-                <UserCard
-                  name={user.name}
-                  email={user.email}
-                  id={user.id}
-                  username={user.username}
-                  imageUrl={user.imageUrl}
-                />
-              </div>
+                <div key={key}>
+                  <Link to={`/person/${user.id}`} style={{textDecoration:"none", color:"black"}}>
+                    <UserCard
+                    name={user.name}
+                    email={user.email}
+                    id={user.id}
+                    username={user.username}
+                    imageUrl={user.imageUrl}
+                    />
+                  </Link>
+                </div>
+              
             );
           })}
       </div>

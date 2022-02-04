@@ -2,7 +2,7 @@ import { extendType, nonNull, objectType, stringArg } from "nexus";
 
 export const User = objectType({
   name: "User",
-  definition(t) {
+  definition(t:any) {
     t.string("id");
     t.string("name");
     t.string("username");
@@ -13,10 +13,10 @@ export const User = objectType({
 
 export const GetUsersQuery = extendType({
   type: "Query",
-  definition(t) {
+  definition(t:any) {
     t.nonNull.list.field("users", {
       type: "User",
-      resolve(_root, _args, context) {
+      resolve(_root:any, _args:any, context:any) {
         return context.db.user.findMany();
       },
     });
@@ -25,7 +25,7 @@ export const GetUsersQuery = extendType({
 
 export const UserMutations = extendType({
   type: "Mutation",
-  definition(t) {
+  definition(t:any) {
     t.field("createUser", {
       type: "User",
       args: {
@@ -34,7 +34,7 @@ export const UserMutations = extendType({
         email: nonNull(stringArg()),
         imageUrl: nonNull(stringArg()),
       },
-      resolve(_root, args, context) {
+      resolve(_root:any, args:any, context:any) {
         const newUser = {
           name: args.name,
           username: args.username,
@@ -44,31 +44,41 @@ export const UserMutations = extendType({
         return context.db.user.create({ data: newUser });
       },
     });
-    t.nonNull.list.field("findUser", {
-      type: "User",
-      args: {
-        email: nonNull(stringArg()),
-      },
-      resolve(_root, args, context) {
-        return context.db.user.findMany({
-          where: {
-            email: args.email,
-          },
-        });
-      },
-    });
   },
 });
 
+export const FindUserMutation = extendType({
+  type: "Query",
+  definition(t:any) {
+    t.nonNull.list.field("findUser", {
+      type: "User",
+      args: {
+        id: nonNull(stringArg()),
+        // email: nonNull(stringArg()),
+      },
+      resolve(_root:any, args:any, context:any) {
+        return context.db.user.findMany({
+          where: {
+            // email: args.email,
+            id: args.id
+          },
+        });
+      },
+    })
+  },
+})
+  
+
+
 export const DeleteUserMutation = extendType({
   type: "Mutation",
-  definition(t) {
+  definition(t:any) {
     t.nonNull.field("deleteUser", {
       type: "User",
       args: {
         id: nonNull(stringArg()),
       },
-      resolve(_root, args, context) {
+      resolve(_root:any, args:any, context:any) {
         return context.db.user.delete({
           where: {
             id: args.id,

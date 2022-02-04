@@ -4,7 +4,7 @@
   height: 60px;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   border-bottom: 1px solid rgb(209, 209, 209);
   transition: 150ms;
 }
@@ -29,6 +29,9 @@
   flex-grow: 1;
   justify-content: start;
   align-items: center;
+}
+.titleText:hover {
+  cursor: pointer;
 }
 .center {
   display: flex;

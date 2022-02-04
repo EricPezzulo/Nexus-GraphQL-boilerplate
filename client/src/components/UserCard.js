@@ -3,6 +3,8 @@ import React from "react";
 import { darkmodeState } from "./Header";
 import styles from "./UserCard.module.css";
 import { useRecoilValue } from "recoil";
+
+
 const DELETE_USER = gql`
   mutation DeleteUser($id: String!) {
     deleteUser(id: $id) {

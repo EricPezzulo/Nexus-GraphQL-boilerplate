@@ -1,0 +1,19 @@
+.PersonPage__container__light {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(245, 245, 245)
+}
+.PersonPage__container__dark {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(42, 42, 42);
+    color:white;
+}
+.image__container{
+    display: flex;
+    height: 400px;
+    max-width:400px;
+    object-fit: contain;
+}

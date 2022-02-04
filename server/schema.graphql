@@ -6,7 +6,6 @@ type Mutation {
   createDraft(body: String!, title: String!): Post
   createUser(email: String!, imageUrl: String!, name: String!, username: String!): User
   deleteUser(id: String!): User!
-  findUser(email: String!): [User]!
   publish(draftId: Int!): Post
 }
 
@@ -19,6 +18,7 @@ type Post {
 
 type Query {
   drafts: [Post]!
+  findUser(id: String!): [User]!
   posts: [Post]
   users: [User]!
 }

@@ -8,6 +8,12 @@
   margin: 10px;
   transition: 150ms;
 }
+.userCard__container__light:hover{
+  cursor: pointer;
+}
+.userCard_container__dark:hover {
+  cursor: pointer;
+}
 .userCard__container__dark {
   display: flex;
   flex-direction: column;
@@ -91,19 +97,46 @@
 .hide__id:active {
   opacity: 1;
 }
-@media only screen and (max-width: 600px) {
-  .userCard__container {
-    width: 220px;
-    font-size: 14px;
-    font-weight: 100;
+@media only screen and (max-width: 568px) {
+  .userCard__container__light {
+    width: 425px;
+    height: 350px;
+    font-size: 18px;
+    font-weight: 300;
     margin: 7px;
+    position: relative;
+  }
+  .userCard__container__dark {
+    width: 425px;
+    height: 350px;
+    font-size: 18px;
+    font-weight: 300;
+    margin: 7px;
+    position: relative;
+  }
+
+  .card__image{
+    height: 225px;
+  }
+  .userCard_buttonContainer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    left: 50;
   }
   .info__container {
     padding: 5px;
   }
-  .componentDelBtn {
-    width: 70px;
-    height: 22px;
+  .componentDelBtn__dark {
+    width: 150px;
+    height: 30px;
+    font-weight: 100;
+  }
+  .componentDelBtn__light {
+    width: 150px;
+    height: 30px;
     font-weight: 100;
   }
 }
