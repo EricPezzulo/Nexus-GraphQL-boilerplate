@@ -4,7 +4,7 @@ import { DarkMode } from "@styled-icons/material/DarkMode";
 import { LightMode } from "@styled-icons/material-twotone/LightMode";
 import { useRecoilState, atom } from "recoil";
 import { useNavigate } from "react-router-dom";
-
+import { Menu } from "@styled-icons/material-rounded/Menu"
 export const darkmodeState = atom({
   key: "darkmodeState",
   default: false,
@@ -27,6 +27,7 @@ const Header = () => {
         <p className={styles.titleText} onClick={()=> {
           navigate(`/`)
         }}>Simpsons Wiki</p>
+        
       </div>
       <div className={styles.center}>
         <div className={styles.searchbar__container}>
@@ -35,6 +36,9 @@ const Header = () => {
         </div>
       </div>
       <div className={styles.right}>
+      <div className={darkmode ? styles.menuIcon__dark : styles.menuIcon__light}>
+          <Menu />
+        </div>
         {darkmode ? (
           <div className={styles.darkModeIcon} onClick={toggleMenu}>
             <DarkMode />
